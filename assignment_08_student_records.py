@@ -87,6 +87,90 @@
 #
 
 # =============================================================================
-# YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
+students = []
+
+
+def add_student():
+    name = input("Student name: ")
+    student_id = int(input("Student ID: "))
+    num_scores = int(input("How many scores? "))
+
+    scores = []
+    for i in range(1, num_scores + 1):
+        score = float(input(f"Enter score {i}: "))
+        scores.append(score)
+
+    student = {
+        "name": name,
+        "id": student_id,
+        "scores": scores
+    }
+    students.append(student)
+    print(f'Student "{name}" added successfully.')
+
+
+def calculate_average(scores):
+    total = 0
+    for score in scores:
+        total += score
+    return total / len(scores)
+
+
+def display_students():
+    if not students:
+        print("No students have been added yet.")
+        return
+
+    print(f"{'Name':<15}{'ID':<12}{'Scores':<20}{'Average':<10}")
+    print("-" * 55)
+    for student in students:
+        scores_str = ", ".join(str(s) for s in student["scores"])
+        avg = calculate_average(student["scores"])
+        print(f"{student['name']:<15}{student['id']:<12}{scores_str:<20}{avg:<10.2f}")
+
+
+def find_average_by_id():
+    student_id = int(input("Enter student ID: "))
+
+    for student in students:
+        if student["id"] == student_id:
+            avg = calculate_average(student["scores"])
+            print(f"{student['name']}'s average score: {avg:.2f}")
+            return
+
+    print("Error: Student ID not found.")
+
+
+def print_menu():
+    print("=================================")
+    print("   STUDENT RECORD SYSTEM MENU")
+    print("=================================")
+    print("1. Add student")
+    print("2. Display all students")
+    print("3. Calculate average score")
+    print("4. Quit")
+
+
+def main():
+    while True:
+        print_menu()
+        choice = input("Enter your choice (1-4): ")
+
+        if choice == "1":
+            add_student()
+        elif choice == "2":
+            display_students()
+        elif choice == "3":
+            find_average_by_id()
+        elif choice == "4":
+            print("Goodbye!")
+            break
+        else:
+            print("Error: Invalid choice. Please enter 1-4.")
+
+        print()
+
+
+main()
 # =============================================================================
 
