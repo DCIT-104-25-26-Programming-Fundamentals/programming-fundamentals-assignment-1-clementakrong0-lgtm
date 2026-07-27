@@ -142,6 +142,8 @@ def main():
             print("Error: Invalid choice. Please enter 1-4.")
 
         print()
+3
+2
 
 
 main()
