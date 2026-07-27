@@ -65,6 +65,93 @@
 
 #
 # =============================================================================
-# YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
+def add(a, b):
+    return a + b
+
+
+def subtract(a, b):
+    return a - b
+
+
+def multiply(a, b):
+    return a * b
+
+
+def divide(a, b):
+    if b == 0:
+        return None
+    return round(a / b, 2)
+
+
+def modulus(a, b):
+    if b == 0:
+        return None
+    return a % b
+
+
+def exponent(a, b):
+    return a ** b
+
+
+def print_menu():
+    print("=================================")
+    print("        SIMPLE CALCULATOR")
+    print("=================================")
+    print("1. Addition")
+    print("2. Subtraction")
+    print("3. Multiplication")
+    print("4. Division")
+    print("5. Modulus")
+    print("6. Exponentiation")
+    print("7. Quit")
+
+
+def main():
+    while True:
+        print_menu()
+        choice = input("Select an operation (1-7): ")
+
+        if choice == "7":
+            print("Goodbye!")
+            break
+
+        if choice not in ["1", "2", "3", "4", "5", "6"]:
+            print("Error: Invalid choice. Please enter 1-7.")
+            print()
+            continue
+
+        first = float(input("Enter first number: "))
+        second = float(input("Enter second number: "))
+
+        if choice == "1":
+            result = add(first, second)
+            symbol = "+"
+        elif choice == "2":
+            result = subtract(first, second)
+            symbol = "-"
+        elif choice == "3":
+            result = multiply(first, second)
+            symbol = "*"
+        elif choice == "4":
+            result = divide(first, second)
+            symbol = "/"
+        elif choice == "5":
+            result = modulus(first, second)
+            symbol = "%"
+        elif choice == "6":
+            result = exponent(first, second)
+            symbol = "**"
+
+        if result is None:
+            print("Error: Cannot divide by zero.")
+        else:
+            first_display = int(first) if first.is_integer() else first
+            second_display = int(second) if second.is_integer() else second
+            print(f"Result: {first_display} {symbol} {second_display} = {result}")
+
+        print()
+
+
+main()
 # =============================================================================
 
